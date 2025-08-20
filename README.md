@@ -27,7 +27,7 @@ We believe that books have the power to connect people, expand perspectives, and
 - [Node.js](https://nodejs.org/) 14.0 or higher  
 - [MongoDB](https://www.mongodb.com/) 4.4 or higher  
 - npm or yarn  
-
+---
 ### 🔧 Installation
 
 Clone the repository:
@@ -47,7 +47,12 @@ start the dev server:
 ```bash
 npm run dev
 ```
-#### **remember: this not working yet**
+🔴 **Remember: this not working yet**
+<table>
+ <tr><td bgcolor = "#FF5733">Nos vamos atualizar o metodo de instalação e inicialização com o tempo</td></tr>
+</table>
+
+---
 
 📚 How to Contribute
 
@@ -63,6 +68,8 @@ npm run dev
 
  6. Open a Pull Request
 
+---
+
 💡 Looking for Ideas?
 
 * Add support for additional ebook formats
@@ -72,6 +79,8 @@ npm run dev
 * Translate the interface into new languages
 
 * Create reading statistics visualizations
+
+---
 
 🛣️ Roadmap
 
@@ -85,6 +94,8 @@ npm run dev
 
 * 🔑 API Public Release
 
+---
+  
 📄 License
 
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE.md
