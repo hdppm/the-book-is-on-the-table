@@ -12,6 +12,8 @@ A collaborative platform for book enthusiasts to share knowledge, discover new r
 **"The Book Is On The Table"** is an initiative designed to transform reading from a solitary activity into a shared experience.  
 We believe that books have the power to connect people, expand perspectives, and create meaningful conversations.
 
+🚨 **this repo is for front-end**
+
 ### ✨ Key Features
 - 📚 **Book Sharing System**: Exchange books with fellow readers in your community  
 - 🔎 **Reading Recommendations**: Get personalized suggestions based on your preferences  
