@@ -1,7 +1,7 @@
 # 📖 The Book Is On The Table
 
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)
+![Version](https://img.shields.io/badge/beta-1.0.0-brightgreen)
 
 A collaborative platform for book enthusiasts to share knowledge, discover new readings, and cultivate a passionate reading community.
 
