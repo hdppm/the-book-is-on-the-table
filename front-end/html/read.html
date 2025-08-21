@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura Minimalista</title>
+    <link rel="stylesheet" href="/front-end/style/read.css">
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Leitura Minimalista</h1>
+        <div class="controls">
+            <button class="control-btn" id="font-decrease" title="Diminuir fonte">A-</button>
+            <button class="control-btn" id="font-reset" title="Tamanho normal">A</button>
+            <button class="control-btn" id="font-increase" title="Aumentar fonte">A+</button>
+            <button class="control-btn" id="theme-toggle" title="Alternar tema">🌓</button>
+        </div>
+    </header>
+    
+    <main>
+        <h2 class="chapter-title">Capítulo 1: O Início</h2>
+        <div class="content">
+            <p>Era uma vez, em um reino distante, uma pequena vila cercada por montanhas imponentes e florestas densas. Os habitantes viviam em paz, dedicando-se às suas atividades cotidianas com alegria e contentamento.</p>
+            <p>No centro da vila, havia uma grande praça onde as pessoas se reuniam para conversar, compartilhar histórias e celebrar as festividades. As crianças brincavam despreocupadas, correndo entre as bancas do mercado e ouvindo as lendas contadas pelos anciãos.</p>
+            <p>Entre os moradores, vivia um jovem chamado Lucas, conhecido por sua curiosidade insaciável. Ele passava horas na biblioteca da vila, devorando livros sobre lugares distantes, culturas exóticas e aventuras emocionantes.</p>
+            <p>Um dia, enquanto explorava o sótão de sua casa, Lucas encontrou um antigo mapa escondido dentro de um baú empoeirado. O documento amarelado pelo tempo mostrava rotas para terras desconhecidas, com anotações em uma língua que ele não conseguia decifrar.</p>
+            <p>Intrigado, Lucas mostrou o mapa ao sábio da vila, o velho Thomas, que examinou o documento com olhos arregalados. "Este mapa", sussurrou Thomas, "pode levar ao maior tesouro já conhecido em nossas terras. Mas a jornada será perigosa."</p>
+        </div>
+    </main>
+    
+    <footer>
+        <div>Página 1 de 120</div>
+        <div class="page-controls">
+            <button class="page-btn" id="prev-page">Anterior</button>
+            <button class="page-btn" id="next-page">Próxima</button>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Controles de tema
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme') || 'light';
+                body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+            });
+            
+            // Controles de tamanho de fonte
+            const fontDecrease = document.getElementById('font-decrease');
+            const fontReset = document.getElementById('font-reset');
+            const fontIncrease = document.getElementById('font-increase');
+            
+            // Valores base para referência
+            const baseFontSize = 16;
+            let currentFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            
+            fontDecrease.addEventListener('click', () => {
+                currentFontSize = Math.max(baseFontSize * 0.8, currentFontSize - 2);
+                document.documentElement.style.fontSize = `${currentFontSize}px`;
+            });
+            
+            fontReset.addEventListener('click', () => {
+                currentFontSize = baseFontSize;
+                document.documentElement.style.fontSize = `${baseFontSize}px`;
+            });
+            
+            fontIncrease.addEventListener('click', () => {
+                currentFontSize = Math.min(baseFontSize * 1.5, currentFontSize + 2);
+                document.documentElement.style.fontSize = `${currentFontSize}px`;
+            });
+            
+            // Controles de página (simulação)
+            const prevPage = document.getElementById('prev-page');
+            const nextPage = document.getElementById('next-page');
+            
+            prevPage.addEventListener('click', () => {
+                alert('Funcionalidade de página anterior será implementada aqui.');
+            });
+            
+            nextPage.addEventListener('click', () => {
+                alert('Funcionalidade de próxima página será implementada aqui.');
+            });
+        });
+    </script>
+</body>
+</html>
