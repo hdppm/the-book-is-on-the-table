@@ -2,43 +2,373 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="/front-end/style/login.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    body.light {
+      background: #ffffff;
+      color: #333;
+    }
+
+    body.dark {
+      background: #1a1a1a;
+      color: #f0f0f0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 450px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      transition: background 0.3s, box-shadow 0.3s;
+      border: 1px solid #e0e0e0;
+    }
+
+    body.dark .container {
+      background: #2a2a2a;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      border-color: #444;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    body.dark h2 {
+      color: #ecf0f1;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    body.dark label {
+      color: #ecf0f1;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border 0.3s, box-shadow 0.3s;
+      background-color: #f9f9f9;
+    }
+
+    body.dark input {
+      background-color: #3a3a3a;
+      border-color: #555;
+      color: #f0f0f0;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    body.dark input:focus {
+      border-color: #2980b9;
+      box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    body.dark .btn {
+      background: #2980b9;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    body.dark .btn:hover {
+      background: #2471a3;
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .theme-toggle {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #themeButton {
+      padding: 10px 16px;
+      background: transparent;
+      border: 1px solid #3498db;
+      color: #3498db;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+
+    body.dark #themeButton {
+      border-color: #2980b9;
+      color: #2980b9;
+    }
+
+    #themeButton:hover {
+      background: #3498db;
+      color: white;
+    }
+
+    body.dark #themeButton:hover {
+      background: #2980b9;
+      color: white;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+      
+      h2 {
+        font-size: 24px;
+      }
+      
+      input, .btn {
+        padding: 12px;
+      }
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      background: #2ecc71;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1000;
+      max-width: 300px;
+    }
+
+    .notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .notification.error {
+      background: #e74c3c;
+    }
+
+    .redirect-message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+
+    body.dark .redirect-message {
+      color: #bdc3c7;
+    }
+  </style>
 </head>
 <body class="light">
-  <div class="background"></div>
-
   <div class="container">
-    <h2>Login</h2>
-    <form>
+    <h2>THE BOOK IS ON THE TABLE!</h2>
+    <form id="loginForm">
       <div class="form-group">
-        <label for="user">User:</label>
-        <input type="text" id="user" placeholder="Usuário">
+        <label for="user">Usuário:</label>
+        <input type="text" id="user" placeholder="Digite seu usuário" required>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Email">
+        <input type="email" id="email" placeholder="Digite seu email" required>
       </div>
       <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Senha">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" placeholder="Digite sua senha" required>
       </div>
       <div class="form-group">
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" placeholder="CPF">
+        <input type="text" id="cpf" placeholder="Digite seu CPF" required>
       </div>
-      <button type="submit" class="btn">Login</button>
+      <button type="submit" class="btn">Entrar</button>
     </form>
+    <div class="redirect-message">
+      <p>Após o login, você será redirecionado para a página principal</p>
+    </div>
     <div class="theme-toggle">
-      <button onclick="toggleTheme()">🌙 Alternar Tema</button>
+      <button id="themeButton">🌙 Alternar Tema</button>
     </div>
   </div>
 
+  <div id="notification" class="notification"></div>
+
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-      document.body.classList.toggle('light');
+    function showNotification(message, isError = false) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.className = isError ? 'notification error' : 'notification';
+      notification.classList.add('show');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
     }
+
+    
+    function validateCPF(cpf) {
+      cpf = cpf.replace(/[^\d]+/g, '');
+      if (cpf === '') return false;
+      if (cpf.length !== 11 ||
+        cpf === "00000000000" ||
+        cpf === "11111111111" ||
+        cpf === "22222222222" ||
+        cpf === "33333333333" ||
+        cpf === "44444444444" ||
+        cpf === "55555555555" ||
+        cpf === "66666666666" ||
+        cpf === "77777777777" ||
+        cpf === "88888888888" ||
+        cpf === "99999999999")
+        return false;
+      let add = 0;
+      for (let i = 0; i < 9; i++)
+        add += parseInt(cpf.charAt(i)) * (10 - i);
+      let rev = 11 - (add % 11);
+      if (rev === 10 || rev === 11)
+        rev = 0;
+      if (rev !== parseInt(cpf.charAt(9)))
+        return false;
+      add = 0;
+      for (let i = 0; i < 10; i++)
+        add += parseInt(cpf.charAt(i)) * (11 - i);
+      rev = 11 - (add % 11);
+      if (rev === 10 || rev === 11)
+        rev = 0;
+      if (rev !== parseInt(cpf.charAt(10)))
+        return false;
+        
+      return true;
+    }
+    const themeButton = document.getElementById('themeButton');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.remove('light');
+      body.classList.add('dark');
+      themeButton.textContent = '☀️ Alternar Tema';
+    }
+    
+    themeButton.addEventListener('click', () => {
+      if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeButton.textContent = '☀️ Alternar Tema';
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+        themeButton.textContent = '🌙 Alternar Tema';
+      }
+    });
+
+    const loginForm = document.getElementById('loginForm');
+    const cpfInput = document.getElementById('cpf');
+
+    cpfInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length > 11) {
+        value = value.slice(0, 11);
+      }
+      
+      if (value.length <= 11) {
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+        value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+      }
+      
+      e.target.value = value;
+    });
+    
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const user = document.getElementById('user').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const cpf = document.getElementById('cpf').value.trim();
+      
+      if (user === '' || email === '' || password === '' || cpf === '') {
+        showNotification('Por favor, preencha todos os campos!', true);
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showNotification('Por favor, insira um email válido!', true);
+        return;
+      }
+      
+      const cleanCPF = cpf.replace(/\D/g, '');
+      if (!validateCPF(cleanCPF)) {
+        showNotification('Por favor, insira um CPF válido!', true);
+        return;
+      }
+      
+
+      showNotification(`Bem-vindo, ${user}! Redirecionando...`);
+      
+     
+      setTimeout(() => {
+        window.location.href = 'chose.html';
+      }, 2000);
+    });
   </script>
 </body>
 </html>

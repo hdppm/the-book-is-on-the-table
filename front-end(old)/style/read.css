@@ -1,0 +1,185 @@
+/* Variáveis CSS para temas e personalização */
+        :root {
+            --bg-color: #f8f8f8;
+            --text-color: #333;
+            --accent-color: #4a6fa5;
+            --border-color: #ddd;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --font-size: 1rem;
+            --line-height: 1.6;
+            --font-family: 'Georgia', serif;
+        }
+
+        /* Tema escuro */
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e6e6e6;
+            --accent-color: #6b98d6;
+            --border-color: #444;
+            --header-bg: rgba(26, 26, 26, 0.95);
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            padding: 0;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--header-bg);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Conteúdo principal */
+        main {
+            flex: 1;
+            padding: 1.5rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            text-align: center;
+            color: var(--text-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content {
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .content p {
+            margin-bottom: 1.2rem;
+            text-indent: 1.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--header-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .page-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .page-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .page-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Utilitários */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            :root {
+                --font-size: 0.95rem;
+            }
+            
+            header {
+                padding: 0.6rem;
+            }
+            
+            .header-title {
+                font-size: 1.1rem;
+            }
+            
+            .control-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            
+            main {
+                padding: 1rem 0.8rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.5rem;
+            }
+        }

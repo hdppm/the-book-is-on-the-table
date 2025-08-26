@@ -12,17 +12,21 @@ const searchBtn = document.getElementById('search-btn');
 const refreshBtn = document.getElementById('refresh-books');
 const tryAgainBtn = document.getElementById('try-again');
 
+// Variáveis globais
 let books = [];
 let filteredBooks = [];
 let currentView = 'grid';
 let sortAscending = true;
 let currentBookId = null;
+
+// Inicialização
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
     setupEventListeners();
     loadBooks();
 });
 
+// Configuração do tema
 function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -40,21 +44,27 @@ function initTheme() {
     });
 }
 
+// Configuração dos listeners de eventos
 function setupEventListeners() {
+    // Controles de visualização
     const viewToggle = document.getElementById('view-toggle');
     viewToggle.addEventListener('click', toggleView);
     
+    // Ordenação
     const sortToggle = document.getElementById('sort-toggle');
     sortToggle.addEventListener('click', toggleSort);
+    
+    // Pesquisa
     searchBtn.addEventListener('click', searchBooks);
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') searchBooks();
     });
-
+    
+    // Atualizar livros
     refreshBtn.addEventListener('click', loadBooks);
     tryAgainBtn.addEventListener('click', loadBooks);
     
-
+    // Modal de adição/edição
     const addBookBtn = document.getElementById('add-book');
     const bookModal = document.getElementById('book-modal');
     const cancelModalBtn = document.getElementById('cancel-modal');
@@ -64,7 +74,7 @@ function setupEventListeners() {
     cancelModalBtn.addEventListener('click', () => closeModal('book-modal'));
     bookForm.addEventListener('submit', handleBookSubmit);
     
-
+    // Modal de detalhes
     const detailModal = document.getElementById('detail-modal');
     const closeDetailBtn = document.getElementById('close-detail');
     const editBookBtn = document.getElementById('edit-book');
@@ -73,7 +83,8 @@ function setupEventListeners() {
     closeDetailBtn.addEventListener('click', () => closeModal('detail-modal'));
     editBookBtn.addEventListener('click', editBook);
     deleteBookBtn.addEventListener('click', deleteBook);
-
+    
+    // Fechar modais ao clicar fora
     document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -83,6 +94,7 @@ function setupEventListeners() {
     });
 }
 
+// Funções para manipulação da API
 async function fetchBooks() {
     try {
         showLoading();
@@ -163,7 +175,7 @@ async function deleteBookFromServer(bookId) {
     }
 }
 
-
+// Funções para manipulação da UI
 async function loadBooks() {
     books = await fetchBooks();
     
@@ -268,7 +280,7 @@ async function deleteBook() {
         try {
             await deleteBookFromServer(currentBookId);
             closeModal('detail-modal');
-            loadBooks(); 
+            loadBooks(); // Recarregar a lista de livros
         } catch (error) {
             console.error('Erro ao excluir livro:', error);
         }
@@ -289,7 +301,7 @@ function openBookModal(book = null) {
     const bookColor = document.getElementById('book-color');
     
     if (book) {
-    
+        // Modo edição
         modalTitle.textContent = 'Editar Livro';
         bookId.value = book.id;
         bookTitle.value = book.title;
@@ -300,7 +312,7 @@ function openBookModal(book = null) {
         bookCover.value = book.coverUrl || '';
         bookColor.value = book.color || '#4a6fa5';
     } else {
-   
+        // Modo adição
         modalTitle.textContent = 'Adicionar Novo Livro';
         bookForm.reset();
         bookId.value = '';
@@ -326,15 +338,15 @@ async function handleBookSubmit(e) {
     
     try {
         if (bookId) {
-           
+            // Editar livro existente
             await updateBook(bookId, bookData);
         } else {
-       
+            // Adicionar novo livro
             await addBook(bookData);
         }
         
         closeModal('book-modal');
-        loadBooks(); 
+        loadBooks(); // Recarregar a lista de livros
     } catch (error) {
         console.error('Erro ao salvar livro:', error);
     }
@@ -429,6 +441,6 @@ function hideEmptyState() {
 }
 
 function showError(message) {
- 
+    // Implementar exibição de erro para o usuário
     console.error(message);
 }

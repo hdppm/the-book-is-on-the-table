@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;600;800&display=swap");
+
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #555555;
+  --accent: #000000;
+  --card: #f9f9f9;
+  --border: #cccccc;
+  --shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  --fs: 16px;
+  --lh: 1.8;
+  --radius: 14px;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --fg: #ffffff;
+  --muted: #bbbbbb;
+  --accent: #ffffff;
+  --card: #1e1e1e;
+  --border: #333333;
+  --shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+body {
+  font-family: "Merriweather", serif;
+  font-size: var(--fs);
+  line-height: var(--lh);
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background: var(--card);
+  transition: background 0.3s, color 0.3s;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.controls .control-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.controls .control-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem 0;
+}
+.search-bar input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+.search-bar button {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.search-bar button:hover { opacity: 0.8; }
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.book-link:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.book-card {
+  background: var(--card);
+  color: var(--fg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: center;
+  padding: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+}
+.book-card img {
+  width: 100%;
+  border-radius: var(--radius);
+  margin-bottom: 0.5rem;
+}
+.footer {
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--muted);
+  transition: color 0.3s;
+}

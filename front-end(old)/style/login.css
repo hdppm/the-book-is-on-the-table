@@ -1,0 +1,136 @@
+/* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Fundo com blur */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      filter: blur(15px);
+      transform: scale(1.1); /* evitar bordas visíveis */
+      z-index: -1;
+      transition: background 0.4s ease-in-out;
+    }
+
+    .container {
+      padding: 30px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      width: 320px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #6a5acd;
+      box-shadow: 0 0 5px rgba(106,90,205,0.5);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+      background: #6a5acd;
+      color: #fff;
+    }
+
+    .btn:hover {
+      background: #5848c2;
+    }
+
+    .theme-toggle {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .theme-toggle button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    /* Tema Claro */
+    body.light .background {
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    }
+
+    body.light .theme-toggle button {
+      background: #333;
+      color: #fff;
+    }
+
+    /* Tema Escuro */
+    body.dark .background {
+      background: linear-gradient(135deg, #1f1f1f, #3d3d3d);
+    }
+
+    body.dark .container {
+      background: rgba(44, 44, 44, 0.85);
+      color: #f1f1f1;
+    }
+
+    body.dark input {
+      border-color: #555;
+      background: rgba(0,0,0,0.3);
+      color: #f1f1f1;
+    }
+
+    body.dark .btn {
+      background: #9b59b6;
+      color: #fff;
+    }
+
+    body.dark .btn:hover {
+      background: #8e44ad;
+    }
+
+    body.dark .theme-toggle button {
+      background: #f1f1f1;
+      color: #000;
+    }

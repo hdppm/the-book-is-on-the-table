@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.5s ease;
+  padding: 20px;
+}
+
+
+body.light {
+  background: linear-gradient(135deg, #ffffff 0%, #1f61d1 100%);
+  color: #333;
+}
+
+
+body.dark {
+  background: linear-gradient(135deg, #0f1b30 0%, #152642 100%);
+  color: #f0f0f0;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  transition: background 0.3s;
+}
+
+body.dark .container {
+  background: rgba(30, 30, 40, 0.9);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2575fc;
+  font-size: 28px;
+}
+
+body.dark h2 {
+  color: #4d8eff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+body.dark input {
+  background-color: #2c2c3a;
+  border-color: #444;
+  color: #f0f0f0;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2575fc;
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+}
+
+body.dark input:focus {
+  border-color: #4d8eff;
+  box-shadow: 0 0 0 3px rgba(77, 142, 255, 0.3);
+}
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+body.dark .btn {
+  background: #4d8eff;
+}
+
+.btn:hover {
+  background: #1a62e0;
+  transform: translateY(-2px);
+}
+
+body.dark .btn:hover {
+  background: #3a7dff;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.theme-toggle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.theme-toggle button {
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid #2575fc;
+  color: #2575fc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+body.dark .theme-toggle button {
+  border-color: #4d8eff;
+  color: #4d8eff;
+}
+
+.theme-toggle button:hover {
+  background: #2575fc;
+  color: white;
+}
+
+body.dark .theme-toggle button:hover {
+  background: #4d8eff;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  input, .btn {
+    padding: 12px;
+  }
+}
+body {
+    transition: background 0.3s, color 0.3s;
+}
+
+.tema-claro {
+    background: white;
+    color: black;
+}
+
+.tema-escuro {
+    background: black;
+    color: white;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
