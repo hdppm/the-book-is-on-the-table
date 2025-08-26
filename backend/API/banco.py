@@ -23,10 +23,10 @@ conn.commit()
 
 # ------ AUX FUNCS ------ #
 
-def add_book(title, num_pages=0,author=None, description=None, year=None, release_date=None):
+def add_book(title, num_pages=0, author=None, description=None, year=None, release_date=None, age_range=None):
     cursor.execute(
-        "INSERT INTO books (book_title, book_pages, book_author, book_description, year_of_release, release_date) VALUES (?, ?, ?, ?, ?, ?)",
-        (title, num_pages, author, description, year, release_date))
+        "INSERT INTO books (book_title, book_pages, book_author, book_description, year_of_release, release_date, age_range) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (title, num_pages, author, description, year, release_date, age_range))
     conn.commit()
     return cursor.lastrowid
 
