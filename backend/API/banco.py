@@ -37,35 +37,35 @@ async def add_book(
     year_of_release: int,
     release_date: str,
     book_image: str,  # Changed from vars to str, assuming it's a file path or URL
-    age_range: str,
-    db: aiosqlite.Connection = Depends(get_db)
+    #age_range: str,
 ):
-    try:
+    async with aiosqlite.connect(DB_PATH) as db:
+        try:
         # SQL query to insert a new book
-        query = """
-        INSERT INTO books 
-        (name, pages, author, description, year_of_release, release_date, image, age_range)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """
-        
+            query = """
+            INSERT INTO books 
+            (book_name, book_pages, book_author, book_description, year_of_release, release_date, book_image )
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """
+        #age_range
         # Execute the query with parameters
-        await db.execute(query, (
-            book_name,
-            book_pages,
-            book_author,
-            book_description,
-            year_of_release,
-            release_date,
-            book_image,
-            age_range
-        ))
+            await db.execute(query, (
+                book_name,
+                book_pages,
+                book_author,
+                book_description,
+                year_of_release,
+                release_date,
+                book_image,
+                #age_range
+            ))
         
         # Commit the transaction
-        await db.commit()
+            await db.commit()
         
-        return {"message": "Book added successfully"}
+            return {"message": "Book added successfully"}
         
-    except Exception as e:
-        # Rollback in case of error
-        await db.rollback()
-        raise HTTPException(status_code=500, detail=f"Error adding book: {str(e)}")
+        except Exception as e:
+            # Rollback in case of error
+            await db.rollback()
+            raise HTTPException(status_code=500, detail=f"Error adding book: {str(e)}")

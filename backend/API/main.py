@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends
-from banco import add_book, get_books
+from banco import *
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -16,24 +16,24 @@ async def book_endpoint(books: list = Depends(get_books), book_id: int = None):
     return {"error": "Book not found"}
 
 class BookCreate(BaseModel):
-    name: str
-    pages: int
-    author: str
-    description: str
+    book_name: str
+    book_pages: int
+    book_author: str
+    book_description: str
     year_of_release: int
     release_date: str
-    image: str
-    age_range: str
+    book_image: str
+    #age_range: str
 
 @app.post("/books")
 async def add_book_endpoint(book: BookCreate):
     return await add_book(
-        book_name=book.name,
-        book_pages=book.pages,
-        book_author=book.author,
-        book_description=book.description,
+        book_name=book.book_name,
+        book_pages=book.book_pages,
+        book_author=book.book_author,
+        book_description=book.book_description,
         year_of_release=book.year_of_release,
         release_date=book.release_date,
-        book_image=book.image,
-        age_range=book.age_range
+        book_image=book.book_image,
+        #age_range=book.age_range
     )
