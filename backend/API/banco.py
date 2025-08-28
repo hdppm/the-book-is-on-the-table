@@ -46,7 +46,7 @@ async def add_book(
             INSERT INTO books 
             (book_name, book_pages, book_author, book_description, year_of_release, release_date, book_image )
             VALUES (?, ?, ?, ?, ?, ?, ?)
-            """
+            """#i take the age rang out bc that bullshit is broken lol
         #age_range
         # Execute the query with parameters
             await db.execute(query, (
