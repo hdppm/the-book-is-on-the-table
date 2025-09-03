@@ -26,21 +26,30 @@ We believe that books have the power to connect people, expand perspectives, and
 ## 🚀 Getting Started
 
 ### ✅ Prerequisites
-- [Node.js](https://nodejs.org/) 14.0 or higher  
-- [MongoDB](https://www.mongodb.com/) 4.4 or higher  
-- npm or yarn  
+- [Python](https://www.python.org/) 3.14.0 or higher  
+- [FastAPI](https://fastapi.tiangolo.com/) 4.4 or higher
+- [Uvicorn](https://pypi.org/project/uvicorn/) 0.35.0 or higher
+- python 
 ---
 ### 🔧 Installation
 
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/the-book-is-on-the-table.git
+git clone https://github.com/hdppm/the-book-is-on-the-table.git
 ```
-Install dependencies: ## work in progress
+## work in progress
+Install dependencies: 
+read the documentation! this file don't be use to teach how to install and run! go to: [documentation API](https://github.com/hdppm/the-book-is-on-the-table/tree/main/backend/API)
+<br/>🔴 **Remember: the backend still didn't exist yet, so i can't gave the documentation with this time and step of the program, the methodology wee use dont give us permision to do this! <br/> 🟡 the general documentation will be made soon as possible! But well, only the documentation of  the API, will be released on the link above!**
+###
+
+## work in progress
+**🔴 Another remember: the front-end can be started with live-server plug-in on vscode. But this only will be tolered wile wee didin't have a doamain and server! only the dev team can use on local server to develop the aplication. Still looking for anothers updates on main breach! This repo will be constantly updated.**
+###
 ```bash
-npm install 
-```
+python -r requirements.txt
 Set up enviroment server: ## work in progress
+```
 ```bash
 cp .env.example .env
 # Edit env with your confg to run
@@ -84,19 +93,6 @@ npm run dev
 
 ---
 
-🛣️ Roadmap
-
-* 📱 Mobile App Development (iOS & Android)
-
-* 🎧 Audiobook Integration
-
-* 📆 Book Club Management Tools
-
-* 🌐 Social Reading Features
-
-* 🔑 API Public Release
-
----
   
 📄 License
 
@@ -112,5 +108,6 @@ This project is licensed under the GNU General Public License v3.0 - see the LIC
 * 📖 Reading data provided by Open Library
 
 ✨ Share knowledge, share passion, share books.
+## Thanks for read the README.md, this needed so much time to write, thanks! Still learning, and search for knowledge, dont give-up.<br/> ASS: all team of HDPPM!
 
 The Book Is On The Table – Making reading a shared journey since 2025
